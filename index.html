@@ -43,26 +43,31 @@
 $(function(){
 
   $("#button").click(function(){
-    var regexL = /^[a-zA-ZÀ-ÿ-]+$/;
+    //regex toutes les lettres dont celles avec les accents et le tiret
+    var regexL = /^[a-zA-ZÀ-ÿ-]+$/; //regex toutes les lettres dont celles avec les accents et le tiret
+    //regex pour le mail [lettres chiffres - _ .]puis arobase puis [lettres chiffres - _ .](2 minimum à l'inifini)le point et enfin les lettres (de 2 à 4)
     var regexM = /^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]{2,}.[a-zA-Z]{2-4}$/
+    // regex pour téléphone limité à 10 chiffres
     var regexN = /^[0-9]{10}$/;
+    // définition des variables par rapport aux input
     var name = $("#name").val();
     var firstname = $("#firstname").val();
     var mail = $("#mail").val();
     var phone = $("#phone").val();
-
+    // si champ vide => renvoie champ vide et affiche une bordure rouge
     if ($("#name").val() == ""){
       $("#name").css("border", "solid 3px red")
       $(".errorname").fadeIn().text("Champ obligatoire vide");
+    // sinon test de la regex  et si ok :  bordure verte et affichage d'un text vide
     }else if(regexL.test(name)){
-      console.log(name);
       $("#name").css("border", "solid 5px green");
       $(".errorname").fadeIn().text("");
+    // sinon bordure rouge et affichage de "erreur de saisie"
       }else{
         $("#name").css("border", "solid 3px red");
         $(".errorname").fadeIn().text("Erreur de saisie");
         }
-
+    //même technique que précédemment
     if ($("#firstname").val() == ""){
       $("#firstname").css("border", "solid 3px red");
       $(".errorfirstname").fadeIn().text("Champ obligatoire vide");
@@ -73,7 +78,7 @@ $(function(){
         $("#firstname").css("border", "solid 3px red");
         $(".errorfirstname").fadeIn().text("Erreur de saisie");
       }
-
+    //même technique que précédemment
     if ($("#mail").val() == ""){
       $("#mail").css("border", "solid 3px red");
       $(".errormail").fadeIn().text("Champ obligatoire vide");
@@ -84,7 +89,7 @@ $(function(){
         $("#mail").css("border", "solid 3px red");
         $(".errorfirstname").fadeIn().text("Erreur de saisie");
       }
-
+    //même technique que précédemment
     if ($("#phone").val() == ""){
       $("#phone").css("border", "solid 3px red");
       $(".errorphone").fadeIn().text("Champ obligatoire vide");
